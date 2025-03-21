@@ -1,8 +1,12 @@
 import travel_agent
 import gui
+from dotenv import load_dotenv
+import os
 
 def main():
-    travel_agent.configure_api("AIzaSyDaAduJQiGhQ7cy3eEEf6M3-ahtUW6c1iE")
+    load_dotenv()
+    gemini_api_key = os.getenv("GEMINI_API_KEY")
+    travel_agent.configure_api(gemini_api_key)
     gui.main()
 
 if __name__ == "__main__":
