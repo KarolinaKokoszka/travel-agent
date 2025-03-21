@@ -1,7 +1,7 @@
 import google.generativeai as genai
 
 def configure_api(api_key):
-    genai.configure(api_key)
+    genai.configure(api_key=api_key)
 
 def ask_gemini(prompt):
     model = genai.GenerativeModel("gemini-2.0-flash")
