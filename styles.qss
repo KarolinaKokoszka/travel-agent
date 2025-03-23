@@ -1,0 +1,245 @@
+/* Ogólne ustawienia */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+}
+
+QMainWindow {
+    background-color: #f0f0f0;
+}
+
+/* Nagłówek z tłem */
+#header {
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 150px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#header QLabel {
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* Tło dla głównego widżetu */
+QWidget {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Tytuły grup */
+QGroupBox {
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid rgb(0, 41, 0);  /* Zmiana na ciemno zielony */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgb(252, 250, 249);  /* Zmiana na jaśniejszy beżowy */
+}
+
+QGroupBox::title {
+    background-origin: margin;
+    position: top center;
+    padding: 5px;
+    color: rgb(0, 41, 0);  /* Zmiana na ciemno zielony */
+}
+
+/* Przycisk generowania planu */
+QPushButton {
+    background-color: rgb(0, 41, 0);  /* Zmiana na ciemno zielony */
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 20px;
+    cursor: hand; /* W PyQt6 używamy 'hand' zamiast 'pointer' */
+}
+
+QPushButton:hover {
+    background-color:rgb(85, 130, 85);  /* Zmiana na ciemniejszy zielony */
+}
+
+/* Pola tekstowe, spinboxy */
+QLineEdit, QDateEdit, QSpinBox, QComboBox, QTextEdit {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+QSpinBox, QComboBox {
+    min-width: 200px;
+}
+
+QTextEdit {
+    min-height: 150px;
+}
+
+/* Przyciski radiowe i checkboxy */
+QRadioButton, QCheckBox {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+QHeaderView::section {
+    color: black;  /* Ustawienie koloru tekstu na czarny */
+    font-weight: bold;
+    font-size: 16px;
+    background-color:rgb(0, 41, 0);  /* Zmiana na ciemno zielony */
+    text-align: center;
+    padding: 5px;
+}
+
+QLabel {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(0, 41, 0);  /* Zmiana na ciemno zielony */
+    margin-bottom: 5px;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Stylizacja kalendarza */
+QCalendarWidget {
+    background-color: #D3D3D3; /* Jasno szare tło */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Stylizacja nagłówków (miesiąc i rok) */
+QCalendarWidget QHeaderView {
+    color: black !important;
+    font-weight: bold;
+    background-color: rgb(0, 41, 0); /* Zmiana na ciemno zielony */
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* Stylizacja tekstu miesiąca i roku */
+QCalendarWidget QHeaderView::section {
+    color: black !important;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Stylizacja dni tygodnia (pon, wto, śr...) */
+QCalendarWidget QTableView {
+    background-color: #f8f8f8;  /* Jasno szare tło dni tygodnia */
+    color: black;
+    font-size: 14px;
+}
+
+QCalendarWidget QTableView QTableWidgetItem {
+    background-color: #ffffff;  /* Białe tło dni miesiąca */
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Stylizacja dni z poprzedniego lub przyszłego miesiąca */
+QCalendarWidget QTableView QTableWidgetItem:disabled {
+    color: #D3D3D3;  /* Jasnoszary kolor tekstu */
+    background-color: transparent;  /* Tło przezroczyste */
+}
+
+/* Stylizacja zaznaczonego zakresu */
+.selected-start {
+    background-color: rgb(0, 41, 0);  /* Ciemno zielony */
+}
+
+.selected-range {
+    background-color: rgb(249, 252, 249);  /* Jaśniejszy beżowy */
+}
+
+/* Zmiana koloru nagłówka miesiąca i roku po najechaniu kursorem */
+QCalendarWidget QHeaderView::section:hover {
+    color: #006400 !important;  /* Kolor ciemno zielony po najechaniu */
+    background-color: rgb(252, 250, 249) !important;  /* Jaśniejszy beżowy kolor tła */
+}
+
+/* Stylizacja etykiet z miesiącem i rokiem */
+QCalendarWidget QToolButton {
+    color: black;  /* Wymuszenie czarnego tekstu */
+    font-weight: bold;
+    font-size: 16px;
+    background: transparent;
+}
+
+/* Stylizacja strzałek nawigacyjnych */
+QCalendarWidget QToolButton::hover {
+    color: black;  /* Utrzymanie koloru po najechaniu */
+}
+
+/* Stylizacja dni tygodnia */
+QCalendarWidget QHeaderView::section {
+    color: black; /* Czarny tekst */
+    font-weight: bold;
+    font-size: 16px;
+    background-color: rgb(173, 196, 173); /* Beżowe tło */
+}
+
+/* Stylizacja pola edycji roku (QSpinBox po kliknięciu na rok) */
+QCalendarWidget QSpinBox {
+    min-width: 40px; /* Zmniejszenie szerokości pola do edycji */
+    max-width: 80px; /* Ograniczenie szerokości */
+    font-size: 14px; /* Mniejsza czcionka */
+    color: black;
+}
+
+/* Powiększone przyciski strzałek */
+QCalendarWidget QSpinBox::up-button, 
+QCalendarWidget QSpinBox::down-button {
+    width: 20px;  /* Większa szerokość */
+    height: 15px; /* Większa wysokość */
+    subcontrol-origin: border;
+    subcontrol-position: top right;
+}
+
+/* Powiększone strzałki */
+QCalendarWidget QSpinBox::up-arrow, 
+QCalendarWidget QSpinBox::down-arrow {
+    width: 15px;  /* Większe strzałki */
+    height: 15px;
+}
+
+/* Dolna strzałka - poprawka na kliknięcie */
+QCalendarWidget QSpinBox::down-button {
+    subcontrol-position: bottom right;
+    margin-top: 5px; /* Więcej miejsca nad dolną strzałką */
+}
+
+
+/* Stylizacja głównego kontenera zakładek */
+QTabWidget::pane {
+    border: 1px solid #dcdcdc;
+    background-color:rgb(0, 41, 0);  /* Ciemno zielony */
+}
+
+/* Stylizacja zakładek */
+QTabBar::tab {
+    background-color:rgb(0, 41, 0);  /* Ciemno zielony */
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+/* Stylizacja aktywnej zakładki */
+QTabBar::tab:selected {
+    background-color:rgb(0, 41, 0);  /* Ciemniejszy zielony */
+    font-weight: bold;
+}
