@@ -3,3 +3,4 @@ python-dotenv
 streamlit
 PyQt6 
 PyQt6-WebEngine
+markdown2

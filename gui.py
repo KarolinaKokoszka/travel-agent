@@ -10,8 +10,8 @@ from PyQt6.QtWidgets import QLineEdit, QCompleter
 from PyQt6.QtGui import QColor, QTextCharFormat
 from PyQt6.QtWebEngineWidgets import QWebEngineView
 from PyQt6.QtWebChannel import QWebChannel
+from markdown2 import markdown
 import re
-
 #-----------------------------do mapki -------------------------------------------------------
 class MapHandler(QObject):
     def __init__(self, window):
@@ -429,10 +429,17 @@ class TravelPlanner(QMainWindow):
         self.generate_button.clicked.connect(self.generate_plan)
         self.layout.addWidget(self.generate_button)
         
-        self.result_text = QTextEdit()
-        self.result_text.setReadOnly(True)
-        self.layout.addWidget(self.result_text)
-        
+        # output
+        self.result_text = QLabel()
+        self.result_text.setWordWrap(True)  # Zawijanie tekstu, aby pasował do szerokości
+        self.result_text.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)  # Wyrównanie do góry
+        self.result_text.setObjectName("result_text")  # Identyfikator dla stylizacji
+        self.result_text.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)  # Możliwość zaznaczania tekstu
+
+        self.layout.addWidget(self.result_text, stretch=3)  # Sprawia, że tekst zajmuje więcej przestrzeni
+
+
+
         # Ustawienie układu w centralnym widżecie
         self.central_widget.setLayout(self.layout)
         self.scroll_area.setWidget(self.central_widget)
@@ -883,7 +890,27 @@ class TravelPlanner(QMainWindow):
         }
         
         response = generate_travel_plan(form_data)
-        self.result_text.setText(response)
+        formatted_response = markdown(response)
+        styled_plan = f"""
+        <div style='background-color: green !important; padding: 15px !important; 
+          text-align: center !important; border-radius: 15px !important; 
+          font-size: 22px !important; font-family: "Trebuchet MS", sans-serif !important; 
+          line-height: 1.5 !important; color: white !important; width: 100% !important; 
+          display: inline-block !important;'>
+         <h2 style='margin: 0 !important;'>Plan Wycieczki "{form_data['destination']}" z {form_data['departure']} (Budżet: {form_data['budget']} zł)</h2>
+        </div>
+
+        <p><b>🎯 Cel:</b> {form_data['interests']}</p>
+        <p><b>👥 Uczestnicy:</b> {form_data['adults']} dorosłych, {form_data['children']} dzieci</p>
+        <p><b>💰 Budżet:</b> {form_data['budget']} zł na osobę</p>
+        <p><b>🗓️ Terminy:</b> {form_data['start_date']} - {form_data['end_date']}</p>
+
+        <hr>
+        <p style='font-size: 16px; color: #333;'>📍 <b>Szczegółowy plan podróży:</b></p>
+        <p>{formatted_response}</p>
+        """
+
+        self.result_text.setText(styled_plan)
 
     #dla wyboru jednokrotnego -> Towarzystwo
     def get_selected_company(self):           

@@ -63,7 +63,6 @@ QPushButton {
     border-radius: 8px;
     border: none;
     margin-top: 20px;
-    cursor: hand; /* W PyQt6 używamy 'hand' zamiast 'pointer' */
 }
 
 QPushButton:hover {
@@ -242,4 +241,15 @@ QTabBar::tab {
 QTabBar::tab:selected {
     background-color:rgb(0, 41, 0);  /* Ciemniejszy zielony */
     font-weight: bold;
+}
+
+
+/* Wygenerowany plan */
+
+#result_text {
+    font-size: 14px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
