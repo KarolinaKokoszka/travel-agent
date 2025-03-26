@@ -12,6 +12,7 @@ from PyQt6.QtWebEngineWidgets import QWebEngineView
 from PyQt6.QtWebChannel import QWebChannel
 from markdown2 import markdown
 import re
+import requests
 #-----------------------------do mapki -------------------------------------------------------
 class MapHandler(QObject):
     def __init__(self, window):
@@ -20,9 +21,26 @@ class MapHandler(QObject):
 
     @pyqtSlot(float, float)
     def receive_coordinates(self, lat, lng):
-        print(f"Otrzymano współrzędne: {lat}, {lng}")
-        self.window.departure_input.setText(f"{lat}, {lng}")  # Używamy referencji do okna
+        city_name = self.get_city_name(lat, lng)
+        
+        if city_name:
+            self.window.departure_input.setText(city_name)
+        else:
+            self.window.departure_input.setText(f"{lat}, {lng}")  # W razie błędu zostawiamy liczby
+        
         self.window.map_dialog.accept()
+
+    def get_city_name(self, lat, lng):
+        """ Pobiera nazwę miasta na podstawie współrzędnych """
+        url = f"https://nominatim.openstreetmap.org/reverse?lat={lat}&lon={lng}&format=json"
+        
+        try:
+            response = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
+            data = response.json()
+            return data.get("address", {}).get("city", data.get("address", {}).get("town", data.get("address", {}).get("village")))
+        except Exception as e:
+            print(f"Błąd pobierania miejscowości: {e}")
+            return None
 
 class MapDialog(QDialog):
     def __init__(self, parent=None):
