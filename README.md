@@ -59,13 +59,13 @@ Działanie Aplikacji:
 Generowanie planu podróży na podstawie formularza.              
 Wyszukiwanie wydarzeń w miejscu docelowym.             
 Zaproponowanie alternatywnego miejsca, jeśli użytkownik wybrał "Gdziekolwiek".                    
-Aby aplikacja działała należy uzupełnić przynajmniej komórkę "Skąd wyjeżdżasz", w przciwnym wypadku otrzymamy informację zwrotną z błędem.                   
-Dla najlepszego możiwego efektu, zalecane jest uzupełnienie wszystkich możliwych komórek.                       
+Aby aplikacja działała należy uzupełnić przynajmniej komórkę "Skąd wyjeżdżasz", w przciwnym wypadku użytkownik otrzyma informację zwrotną z błędem.                   
+Dla najlepszego możliwego efektu, zalecane jest uzupełnienie wszystkich możliwych komórek.                       
 
-Ważne informacje dotyczące działania aplikacji                         
+Ważne informacje dotyczące działania aplikacji, w kontekście etyki                         
 Plan podróży generowany jest automatycznie na podstawie podanych preferencji. AI dobiera propozycje atrakcji i wydarzeń, ale nie gwarantuje ich aktualności. Zalecane jest samodzielne sprawdzenie
-dostępności biletów i innych szczegółów, wydarzeń.                     
+dostępności biletów i innych szczegółów lub wydarzeń.                     
 Aplikacja nie przechowuje ani nie udostępnia żadnych danych osobowych użytkowników. Wszystkie wprowadzone informacje są wykorzystywane wyłącznie na potrzeby tworzenia planu podróży.                   
 Wyniki wyszukiwań nie są sponsorowane ani faworyzowane. AI sugeruje miejsca na podstawie ogólnodostępnych danych i nie promuje żadnych konkretnych usług turystycznych.                        
 Wygenerowany plan uwzględnia czasy przejazdów i odległości, jednak rzeczywisty czas może się różnić w zależności od wielu czynników takich jak korki, wypadki drogowe. Przed podróżą warto zweryfikować szczegóły oraz wziąć pod uwagę możliwe niedogodności.                      
-Aplikacja stara się proponować różnorodne kierunki i aktywności. Nie proponuje konkretncyh hoteli, restauracji, aby zapewnić bezstronność i dostosowanie do indywidualnych preferencji.                                 
+Aplikacja stara się proponować różnorodne kierunki i aktywności. Nie proponuje konkretnych hoteli, restauracji, aby zapewnić bezstronność i dostosowanie do indywidualnych preferencji.                                 
